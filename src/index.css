@@ -49,4 +49,14 @@
     outline: none;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35);
   }
+
+  /* Orbiting marketplace logos animation */
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(92px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(92px) rotate(-360deg);
+    }
+  }
 }

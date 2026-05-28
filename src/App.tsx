@@ -102,42 +102,129 @@ function App() {
                 </div>
               </div>
 
-              {/* Right visual — Premium integrated notebook (video inside device frame) */}
+              {/* Right visual — Premium integrated notebook with orbiting marketplaces */}
               <div className="lg:col-span-5 mt-12 lg:mt-0 lg:-mr-8 relative flex justify-center lg:justify-end">
-                <div 
-                  className="relative w-full max-w-[520px] rotate-[1.2deg] lg:rotate-[2.5deg] transition-transform duration-700"
-                  style={{
-                    filter: 'drop-shadow(0 35px 55px rgba(0,0,0,0.55)) drop-shadow(0 15px 25px rgba(0,0,0,0.35))'
-                  }}
-                >
-                  {/* Laptop bezel + video */}
-                  <div className="relative rounded-[2.25rem] bg-zinc-900 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,255,255,0.06)] border border-white/10">
-                    <div className="relative aspect-[16/10] rounded-[1.35rem] overflow-hidden bg-black">
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1400"
-                        className="absolute inset-0 w-full h-full object-cover"
-                      >
-                        <source src="/animacao.mp4" type="video/mp4" />
-                      </video>
-                      {/* Subtle screen glow + inner highlight */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/40 pointer-events-none" />
-                      <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[1.35rem] pointer-events-none" />
+                <div className="relative w-full max-w-[520px]">
+                  {/* Orbiting Marketplaces Container (behind laptop) */}
+                  <div className="absolute -inset-8 z-10 hidden lg:block">
+                    <div className="relative w-full h-full">
+                      {/* Orbiting logos - slow elegant rotation */}
+                      {[
+                        { 
+                          name: 'Shopee', 
+                          type: 'img', 
+                          src: 'https://cdn.simpleicons.org/shopee/ffffff', 
+                          size: 42, top: '18%', left: '12%', delay: '0s', duration: '28s', opacity: 0.85 
+                        },
+                        { 
+                          name: 'Mercado Livre', 
+                          type: 'svg', 
+                          svg: (
+                            <svg viewBox="0 0 24 24" fill="white" width="38" height="38">
+                              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10zm-3-5H7v-2h10v2z"/>
+                            </svg>
+                          ), 
+                          size: 38, top: '8%', left: '42%', delay: '-4s', duration: '32s', opacity: 0.75 
+                        },
+                        { 
+                          name: 'Amazon', 
+                          type: 'svg', 
+                          svg: (
+                            <svg viewBox="0 0 24 24" fill="white" width="40" height="40">
+                              <path d="M.045 18.02c.072-.116.187-.124.332-.124 1.653 0 3.18.932 4.307 2.24.2.23.3.3.5.3.2 0 .3-.07.5-.3 1.127-1.308 2.654-2.24 4.307-2.24.145 0 .26.008.332.124.072.116.072.3 0 .416-.072.116-.187.124-.332.124-1.653 0-3.18-.932-4.307-2.24-.2-.23-.3-.3-.5-.3-.2 0-.3.07-.5.3-1.127 1.308-2.654 2.24-4.307 2.24-.145 0-.26-.008-.332-.124-.072-.116-.072-.3 0-.416z"/>
+                              <path d="M15.93 8.5c-.2-.3-.5-.5-.9-.5s-.7.2-.9.5l-1.4 2.1-1.4-2.1c-.2-.3-.5-.5-.9-.5s-.7.2-.9.5l-2.3 3.4c-.2.3-.2.7 0 1 .2.3.5.5.9.5s.7-.2.9-.5l1.4-2.1 1.4 2.1c.2.3.5.5.9.5s.7-.2.9-.5l2.3-3.4c.2-.3.2-.7 0-1z"/>
+                            </svg>
+                          ), 
+                          size: 40, top: '22%', left: '78%', delay: '-9s', duration: '26s', opacity: 0.8 
+                        },
+                        { 
+                          name: 'TikTok Shop', 
+                          type: 'img', 
+                          src: 'https://cdn.simpleicons.org/tiktok/ffffff', 
+                          size: 36, top: '68%', left: '82%', delay: '-15s', duration: '30s', opacity: 0.7 
+                        },
+                        { 
+                          name: 'Kwai', 
+                          type: 'svg', 
+                          svg: (
+                            <svg viewBox="0 0 24 24" fill="white" width="34" height="34">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                          ), 
+                          size: 34, top: '72%', left: '18%', delay: '-20s', duration: '34s', opacity: 0.75 
+                        },
+                      ].map((logo, index) => (
+                        <div
+                          key={index}
+                          className="absolute"
+                          style={{
+                            top: logo.top,
+                            left: logo.left,
+                            animation: `orbit ${logo.duration} linear infinite`,
+                            animationDelay: logo.delay,
+                          }}
+                        >
+                          <div 
+                            className="flex items-center justify-center rounded-full bg-white/5 backdrop-blur-sm border border-white/10"
+                            style={{ 
+                              width: logo.size + 18, 
+                              height: logo.size + 18,
+                              opacity: logo.opacity 
+                            }}
+                          >
+                            {logo.type === 'img' ? (
+                              <img 
+                                src={logo.src} 
+                                alt={logo.name} 
+                                width={logo.size} 
+                                height={logo.size}
+                                className="object-contain"
+                              />
+                            ) : (
+                              logo.svg
+                            )}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Laptop base shadow / reflection */}
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[82%] h-8 bg-black/60 blur-2xl rounded-full pointer-events-none" />
-                </div>
+                  {/* Laptop with video */}
+                  <div 
+                    className="relative w-full max-w-[520px] rotate-[1.2deg] lg:rotate-[2.5deg] transition-transform duration-700 z-20"
+                    style={{
+                      filter: 'drop-shadow(0 35px 55px rgba(0,0,0,0.55)) drop-shadow(0 15px 25px rgba(0,0,0,0.35))'
+                    }}
+                  >
+                    {/* Laptop bezel + video */}
+                    <div className="relative rounded-[2.25rem] bg-zinc-900 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,255,255,0.06)] border border-white/10">
+                      <div className="relative aspect-[16/10] rounded-[1.35rem] overflow-hidden bg-black">
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="metadata"
+                          poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1400"
+                          className="absolute inset-0 w-full h-full object-cover"
+                        >
+                          <source src="/animacao.mp4" type="video/mp4" />
+                        </video>
+                        {/* Subtle screen glow + inner highlight */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/40 pointer-events-none" />
+                        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[1.35rem] pointer-events-none" />
+                      </div>
+                    </div>
 
-                {/* Stats badge — stays grounded */}
-                <div className="absolute -bottom-2 right-4 lg:right-8 bg-zinc-900 border border-white/10 rounded-2xl px-5 py-3.5 text-sm hidden lg:block">
-                  <div className="font-mono text-[10px] tracking-[2px] text-white/50 mb-0.5">ÚLTIMO MÊS</div>
-                  <div className="text-white font-semibold tabular-nums">2.847 pedidos enviados</div>
+                    {/* Laptop base shadow / reflection */}
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[82%] h-8 bg-black/60 blur-2xl rounded-full pointer-events-none" />
+                  </div>
+
+                  {/* Stats badge — stays grounded */}
+                  <div className="absolute -bottom-2 right-4 lg:right-8 bg-zinc-900 border border-white/10 rounded-2xl px-5 py-3.5 text-sm hidden lg:block z-30">
+                    <div className="font-mono text-[10px] tracking-[2px] text-white/50 mb-0.5">ÚLTIMO MÊS</div>
+                    <div className="text-white font-semibold tabular-nums">2.847 pedidos enviados</div>
+                  </div>
                 </div>
               </div>
             </div>
