@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://policommerce.com.br/sitemap.xml
