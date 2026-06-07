@@ -7,6 +7,7 @@ import {
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
 
   const handleMobileMenuToggle = () => setMobileMenuOpen(!mobileMenuOpen);
   const handleMobileLinkClick = () => setMobileMenuOpen(false);
@@ -56,7 +57,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <img src="/logo-transparente.png" alt="PoliCommerce" className="h-20 w-auto" />
+              <img src={publicAsset('/logo-transparente.png')} alt="PoliCommerce" className="h-20 w-auto" />
             </div>
 
             {/* Desktop Nav */}
@@ -169,7 +170,7 @@ function App() {
                     <div className="relative rounded-[2.25rem] bg-zinc-900 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_0_1px_rgba(255,255,255,0.06)] border border-white/10">
                       <div className="relative aspect-[16/10] rounded-[1.35rem] overflow-hidden bg-black">
                         <video autoPlay loop muted playsInline preload="metadata" poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1400" className="absolute inset-0 w-full h-full object-cover">
-                          <source src="/animacao.mp4" type="video/mp4" />
+                          <source src={publicAsset('/animacao.mp4')} type="video/mp4" />
                         </video>
                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/40 pointer-events-none" />
                         <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[1.35rem] pointer-events-none" />
@@ -244,7 +245,7 @@ function App() {
               {/* Large card - Vasos */}
               <motion.div whileHover={{ scale: 1.005 }} className="lg:col-span-7 group rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col">
                 <div className="relative h-80">
-                  <img src="/products/vasos-gem.png" alt="Vasos" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+                  <img src={publicAsset('/products/vasos-gem.png')} alt="Vasos" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
                   <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/90 text-zinc-950 text-xs font-semibold flex items-center gap-2">
                     <Plant weight="fill" /> JARDINAGEM
                   </div>
@@ -264,7 +265,7 @@ function App() {
                 {/* Potes */}
                 <motion.div whileHover={{ scale: 1.005 }} className="group rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col">
                   <div className="relative h-48">
-                    <img src="/products/pote-gem.png" alt="Potes" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+                    <img src={publicAsset('/products/pote-gem.png')} alt="Potes" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
                     <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-accent-500 text-white text-xs font-semibold flex items-center gap-2">
                       MAIS VENDIDO
                     </div>
@@ -281,7 +282,7 @@ function App() {
                 {/* Canecas */}
                 <motion.div whileHover={{ scale: 1.005 }} className="group rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col">
                   <div className="relative h-48">
-                    <img src="/products/pratos-copos-gem.png" alt="Canecas" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+                    <img src={publicAsset('/products/pratos-copos-gem.png')} alt="Canecas" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
                     <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/90 text-zinc-950 text-xs font-semibold flex items-center gap-2">
                       RECORRENTE
                     </div>
@@ -329,7 +330,7 @@ function App() {
       <footer className="bg-black border-t border-white/10 py-16 text-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-y-12">
           <div>
-            <img src="/logo-transparente.png" alt="PoliCommerce" className="h-8 mb-6 opacity-90" />
+            <img src={publicAsset('/logo-transparente.png')} alt="PoliCommerce" className="h-8 mb-6 opacity-90" />
             <p className="max-w-xs text-white/60">Especialistas em fabricação e distribuição atacadista de utilidades plásticas duráveis e rentáveis.</p>
           </div>
 
