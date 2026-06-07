@@ -59,4 +59,13 @@
       transform: rotate(360deg) translateX(92px) rotate(-360deg);
     }
   }
+
+  @keyframes orbitMobile {
+    from {
+      transform: rotate(0deg) translateX(58px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(58px) rotate(-360deg);
+    }
+  }
 }
